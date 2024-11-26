@@ -18,7 +18,8 @@ function spendingLimitCalculation (spentValue) {
 
 //Расчёт и рендер при каждом отжатии клавиши
 function refresh() {
-    renderSpendingLimit(spendingLimitCalculation(inputSpent.value).today);
+    let spendingLimit = spendingLimitCalculation(inputSpent.value).today;
+    renderSpendingLimit(spendingLimit);
 }
 
 //Отлавливание нажатия
