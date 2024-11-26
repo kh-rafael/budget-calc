@@ -1,28 +1,24 @@
 //для простоты кол-во дней и бюджет забиты изначально
-let days=10, budget=10000;
-let spendingLimitElement = document.getElementById('spendingLimit'); // ссылка на h1 остатка
-let inputSpent = document.getElementById("inputSpent"); // ссылка на инпут ввода трат
-let SpendingLimitValueToday, SpendingLimitValueTomorrow; // переменные лимита на сегодня и лимита на завтра
+const days=10, budget=10000;
+const spendingLimitElement = document.getElementById('spendingLimit'); // ссылка на h1 остатка
+const inputSpent = document.getElementById("inputSpent"); // ссылка на инпут ввода трат
 
 //пока рендер только для h1
-const render = {
-    spendingLimit(){
-        spendingLimitElement.innerHTML =SpendingLimitValueToday + "₽ на сегодня";
-    },
-};
+function renderSpendingLimit(spentValue) {
+        spendingLimitElement.innerHTML = spentValue + "₽ на сегодня";
+    };
 
 //Расчёт лимита
-const spendingLimit = {
-    calc(SpentValue){
-        SpendingLimitValueToday = (budget/days)-SpentValue;
-        SpendingLimitValueTomorrow = (budget-SpendingLimitValueToday)/days;
-    },
+function spendingLimitCalculation (spentValue) {
+    return spendingLimit = {
+        today: (budget/days)-spentValue,
+        tomorrow: (budget-this.today)/days,
+    };
 };
 
 //Расчёт и рендер при каждом отжатии клавиши
 function refresh() {
-    spendingLimit.calc(inputSpent.value);
-    render.spendingLimit();
+    renderSpendingLimit(spendingLimitCalculation(inputSpent.value).today);
 }
 
 //Отлавливание нажатия
